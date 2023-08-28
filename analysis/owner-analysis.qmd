@@ -24,3 +24,27 @@ lobster_abundance <- lobster_abundance %>%
     mutate(SIZE_MM = na_if(SIZE_MM, -99999))
 ```
 
+## Exercise: Data Visualization
+
+```{r}
+ggplot(data = lobster_abundance, aes(x = SIZE_MM)) +
+    geom_histogram() +
+    facet_wrap(~SITE)
+```
+```{r}
+lobsters_summarize <- lobster_abundance %>% 
+  group_by(SITE, YEAR) %>% 
+  summarize(COUNT = n())
+```
+
+```{r}
+# line plot
+ggplot(data = lobsters_summarize, aes(x = YEAR, y = COUNT)) +
+  geom_line(aes(color = SITE)) 
+
+# line and point plot
+ggplot(data = lobsters_summarize, aes(x = YEAR, y = COUNT)) +
+  geom_point(aes(color = SITE)) +
+  geom_line(aes(color = SITE)) 
+```
+
