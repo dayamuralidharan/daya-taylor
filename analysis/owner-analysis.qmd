@@ -16,7 +16,8 @@ library(tidyr)
 ```{r}
 lobster_abundance <- read_csv("../data/Lobster_Abundance_All_Years_20220829.csv")
 ```
-## convert missing values for lobster_abundance variable
+
+## Convert missing values for lobster_abundance variable
 
 
 ```{r}
@@ -46,5 +47,9 @@ ggplot(data = lobsters_summarize, aes(x = YEAR, y = COUNT)) +
 ggplot(data = lobsters_summarize, aes(x = YEAR, y = COUNT)) +
   geom_point(aes(color = SITE)) +
   geom_line(aes(color = SITE)) 
+```
+
+```{r}
+ggsave("../figs/lobsters_sum.jpg", width = 12, height = 6, units = "in")
 ```
 
