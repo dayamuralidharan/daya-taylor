@@ -14,6 +14,13 @@ library(tidyr)
 ```
 
 ```{r}
-lobster_abundance <- read_csv("data/Lobster_Abundance_All_Years_20220829.csv")
+lobster_abundance <- read_csv("../data/Lobster_Abundance_All_Years_20220829.csv")
+```
+## convert missing values for lobster_abundance variable
+
+
+```{r}
+lobster_abundance <- lobster_abundance %>% 
+    mutate(SIZE_MM = na_if(SIZE_MM, -99999))
 ```
 
