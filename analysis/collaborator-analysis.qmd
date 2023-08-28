@@ -23,6 +23,25 @@ unique(lobster_traps$TRAPS)
 ```
 
 
+## Exercise: Data Visualization
+```{r}
+
+lobster_traps %>% 
+  ggplot(aes(x = TRAPS))+
+  geom_histogram()+
+  facet_wrap(~YEAR)
+
+lobster_traps_summarize <- lobster_traps %>% 
+  group_by(SITE, YEAR) %>% 
+  summarize(TOTAL_TRAPS = sum(TRAPS, na.rm = TRUE))
+
+lobster_traps_summarize %>% 
+  ggplot(aes(x = YEAR, y = TOTAL_TRAPS, color = SITE))+
+  geom_line()
+
+ggsave("../figs/lobster_traps_by_year_line.jpg", width = 12, height = 6, units = "in")
+  
+```
 
 
 
